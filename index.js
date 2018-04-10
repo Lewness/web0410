@@ -19,6 +19,26 @@ app.get('/tamplate',function(req,res){
   res.send(tp1(obj));
 })
 
+//heep://Lacalhost:8080/rowcol?row=4&col=6
+app.get('/rowcol',function(req,res){
+  res.charset = 'UTF-8';
+  var checkbox = '<input type="checkbox">';
+  var row = req.query.row;
+  var col = req.query.col;
+  var string = '';
+  string += '<form>';
+  for( var i =0;i < col;i++){
+    string += checkbox;
+  }
+    string += '</form>';
+    var result = '';
+    for (var i =0;i < row; i++){
+      result += string;
+    }
+  res.send(result);
+})
+
+
 app.post('/', function(req, res){
   res.charset = 'UTF-8';
   res.send('POST로 넘어온 name은 '+ req.body.name + '입니다.');
